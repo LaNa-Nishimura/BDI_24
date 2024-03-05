@@ -1,0 +1,21 @@
+create schema `SIS2402`;
+
+create table `SIS2402`.`CLIENTES`(
+	`NOME` VARCHAR(30) NOT NULL,
+    `EMAIL` VARCHAR(30) NOT NULL,
+    `DATA_NASCIMENTO` DATE NOT NULL,
+    `SEXO` VARCHAR(10) NOT NULL,
+    `CEP` VARCHAR(10) NOT NULL,
+    `RUA` VARCHAR(20) NOT NULL,
+    `NUMERO` VARCHAR(4) NOT NULL,
+    `BAIRRO` VARCHAR(30) NOT NULL,
+    `CIDADE` VARCHAR(20) NOT NULL,
+    `UF` VARCHAR(2) NOT NULL,
+    `PAIS` VARCHAR(20) NOT NULL,
+    PRIMARY KEY(`EMAIL`)
+);
+
+insert into `SIS2402`.`CLIENTES` (`NOME`, `EMAIL`, `DATA_NASCIMENTO`, `SEXO`, `CEP`, `RUA`, `NUMERO`, `BAIRRO`, `CIDADE`, `UF`, `PAIS`)
+values('Lana', 'lana@gmail.com', '20050612', 'feminino', '89560000', 'Rua', '111', 'Bairro', 'Cidade', 'SC', 'Brasil');
+
+select * from `SIS2402`.`CLIENTES`;
