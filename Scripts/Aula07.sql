@@ -24,3 +24,24 @@ WHERE
 	NF.NRO_NOTA = INF.NRO_NOTA
 	AND INF.COD_PRODUTO = PRD.COD_PRODUTO
     AND PRD.COD_PRODUTO = 3;
+    
+-- INNER JOIN
+-- Retorna os registros que são comuns nas duas tabelas
+SELECT NF.NRO_NOTA, NF.NM_CLIENTE, COUNT(INF.COD_PRODUTO) AS QTD, SUM(INF.VL_TOTAL) AS TOTAL FROM NOTA_FISCAL AS NF INNER JOIN ITEM_NOTA_FISCAL AS INF ON NF.NRO_NOTA = INF.NRO_NOTA GROUP BY NF.NRO_NOTA ORDER BY QTD, total DESC;
+
+SELECT NF.NRO_NOTA, NF.NM_CLIENTE, P.DESC_PRODUTO FROM NOTA_FISCAL AS NF INNER JOIN ITEM_NOTA_FISCAL AS INF ON NF.NRO_NOTA = INF.NRO_NOTA INNER JOIN PRODUTO AS P ON INF.COD_PRODUTO = P.COD_PRODUTO ORDER BY NF.NRO_NOTA ASC;
+
+-- LEFT JOIN
+-- Retorna os registros que estão na tabela à esquerda (mesmo que não estejam à direita) e os registros da tabela à direita que são comuns a ela
+
+SELECT NF.NRO_NOTA, NF.NM_CLIENTE, P.DESC_PRODUTO FROM NOTA_FISCAL AS NF LEFT JOIN ITEM_NOTA_FISCAL AS INF ON NF.NRO_NOTA = INF.NRO_NOTA LEFT JOIN PRODUTO AS P ON INF.COD_PRODUTO = P.COD_PRODUTO ORDER BY NF.NRO_NOTA ASC;
+
+INSERT INTO PRODUTO (DESC_PRODUTO, UN_MED, VL_PRODUTO) VALUES ('Queijo', 'Kg', '30');
+INSERT INTO PRODUTO (DESC_PRODUTO, UN_MED, VL_PRODUTO) VALUES ('Copa', 'Kg', '70');
+
+-- RIGHT JOIN
+-- Usamos para exibir os registros que estão na tabela à direita (mesmo que não estejam na tabela à esquerda) e os registros da tabela à esquerda que são comuns a ela
+
+SELECT NF.NRO_NOTA, NF.NM_CLIENTE, P.DESC_PRODUTO FROM NOTA_FISCAL AS NF RIGHT JOIN ITEM_NOTA_FISCAL AS INF ON NF.NRO_NOTA = INF.NRO_NOTA RIGHT JOIN PRODUTO AS P ON INF.COD_PRODUTO = P.COD_PRODUTO ORDER BY NF.NRO_NOTA ASC;
+
+/* Escreva um script SQL que alimente as tabelas do seu banco de dados do simpósio, crie ao menos um simpósio, 2 cursos, 3 palestras, 5 artigos, com autores e participantes. não esqueça da comissão avaliadora e das avaliações, realize o processo de preenchimento de alguns dados em todas as tabelas do seu schema */
